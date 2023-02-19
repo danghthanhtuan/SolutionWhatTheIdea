@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
+using SWTI.Configurations;
 using SWTI.Interfaces.IProviders;
-using SWTL.Configurations;
 using System.Data.SqlClient;
 
 namespace SWTI.Providers

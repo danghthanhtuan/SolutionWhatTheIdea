@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SWTL.Configurations;
 
 namespace SWTI.Configurations
 {
@@ -9,6 +8,7 @@ namespace SWTI.Configurations
         public static void ConfigurationDependencyRegister(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConnectionStrings>(configuration.GetSection(nameof(ConnectionStrings)));
+            services.Configure<RedisSettings>(configuration.GetSection(nameof(RedisSettings)));
         }
     }
 }

@@ -6,6 +6,7 @@ using SWTI.Consumers;
 using SWTI.Mapper;
 using SWTI.Providers;
 using SWTI.RabbitMQCore;
+using SWTI.RedisProvider;
 
 namespace SWTI.DependencyInjection
 {
@@ -21,6 +22,7 @@ namespace SWTI.DependencyInjection
             services.DomainDependencyRegister(configuration);
             services.AddHostedService<SWTI.RabbitMQCore.AutoSubscriberHostedService>();
             services.ConsumerDependencyRegister();
+            services.RedisDependencyRegister(configuration);
             
         }
 

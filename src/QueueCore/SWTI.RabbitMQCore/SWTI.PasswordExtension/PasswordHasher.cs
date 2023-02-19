@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SWTI.RabbitMQCore.Senpay.Wallet.PasswordExtension
+namespace SWTI.RabbitMQCore.SWTI.PasswordExtension
 {
     /// <summary>
     /// https://juldhais.net/secure-way-to-store-passwords-in-database-using-sha256-asp-net-core-898128d1c4ef

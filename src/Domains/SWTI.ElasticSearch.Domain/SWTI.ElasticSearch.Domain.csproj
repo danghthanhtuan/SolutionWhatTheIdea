@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Redis\SWTI.RedisProvider\SWTI.RedisProvider.csproj" />
+    <Folder Include="Domain\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\SolutionWTI.Interfaces\SWTI.Interfaces\SWTI.Interfaces.csproj" />
   </ItemGroup>
 

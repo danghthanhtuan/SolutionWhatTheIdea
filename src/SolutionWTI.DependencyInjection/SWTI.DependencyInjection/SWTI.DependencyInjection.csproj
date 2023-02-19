@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Domains\SWTI.Account.Domain\SWTI.Account.Domain.csproj" />
     <ProjectReference Include="..\..\QueueCore\SWTI.RabbitMQCore\SWTI.RabbitMQCore.csproj" />
+    <ProjectReference Include="..\..\Redis\SWTI.RedisProvider\SWTI.RedisProvider.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Configurations\SWTI.Configurations\SWTI.Configurations.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Consumers\SWTI.Consumers\SWTI.Consumers.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Mapper\SWTI.Mapper\SWTI.Mapper.csproj" />
