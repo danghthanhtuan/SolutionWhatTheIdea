@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SWTI.Api.Test": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54836;http://localhost:54837"
+    }
+  }
+}

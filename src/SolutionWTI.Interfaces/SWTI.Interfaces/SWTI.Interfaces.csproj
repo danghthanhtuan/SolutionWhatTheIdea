@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EasyNetQ" Version="7.4.3" />
+    <PackageReference Include="EasyNetQ.Management.Client" Version="2.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Threading.Tasks" Version="4.0.11" />
   </ItemGroup>

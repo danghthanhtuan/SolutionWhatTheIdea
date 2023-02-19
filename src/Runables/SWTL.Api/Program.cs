@@ -1,5 +1,6 @@
-using NLog;
+﻿using NLog;
 using NLog.Web;
+using SWTI.Consumers;
 using SWTI.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
