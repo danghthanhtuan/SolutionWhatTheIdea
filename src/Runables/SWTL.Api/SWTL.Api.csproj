@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Applications\SWTI.Api.ProductIntroduce\SWTI.Api.ProductIntroduce.csproj" />
     <ProjectReference Include="..\..\Applications\SWTI.Api.Test\SWTI.Api.Test.csproj" />
+    <ProjectReference Include="..\..\SolutionWTI.Consumers\SWTI.Consumers\SWTI.Consumers.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.DependencyInjection\SWTI.DependencyInjection\SWTI.DependencyInjection.csproj" />
   </ItemGroup>
 

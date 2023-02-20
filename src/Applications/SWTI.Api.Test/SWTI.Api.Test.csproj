@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Redis\SWTI.RedisProvider\SWTI.RedisProvider.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Interfaces\SWTI.Interfaces\SWTI.Interfaces.csproj" />
   </ItemGroup>
 
