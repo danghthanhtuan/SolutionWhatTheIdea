@@ -4,6 +4,7 @@ using SWTI.Account.Domain;
 using SWTI.Configurations;
 using SWTI.Consumers;
 using SWTI.Mapper;
+using SWTI.Partner.Domain;
 using SWTI.Providers;
 using SWTI.RabbitMQCore;
 using SWTI.RedisProvider;
@@ -28,7 +29,7 @@ namespace SWTI.DependencyInjection
 
         private static void ServiceDependencyRegister(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AccountSenpayClientDependencyRegister(configuration);
+            services.PartnerDomainDependencyRegister(configuration);
         }
 
         private static void DomainDependencyRegister(this IServiceCollection services, IConfiguration configuration)

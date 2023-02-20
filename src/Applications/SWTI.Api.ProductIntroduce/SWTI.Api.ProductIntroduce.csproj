@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SolutionWTI.Interfaces\SWTI.Interfaces\SWTI.Interfaces.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Models\SWTL.Models\SWTL.Models.csproj" />
   </ItemGroup>
 

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domains\SWTI.Account.Domain\SWTI.Account.Domain.csproj" />
+    <ProjectReference Include="..\..\Domains\SWTI.Partner.Domain\SWTI.Partner.Domain.csproj" />
     <ProjectReference Include="..\..\QueueCore\SWTI.RabbitMQCore\SWTI.RabbitMQCore.csproj" />
     <ProjectReference Include="..\..\Redis\SWTI.RedisProvider\SWTI.RedisProvider.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Configurations\SWTI.Configurations\SWTI.Configurations.csproj" />

@@ -49,6 +49,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{2B350232
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SWTI.RedisProvider", "src\Redis\SWTI.RedisProvider\SWTI.RedisProvider.csproj", "{28528C82-8DE7-4405-BC50-2EFE1EFE0812}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWTI.Partner.Domain", "src\Domains\SWTI.Partner.Domain\SWTI.Partner.Domain.csproj", "{241BA437-8B07-4774-968C-3A8E5028C613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,10 @@ Global
 		{28528C82-8DE7-4405-BC50-2EFE1EFE0812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28528C82-8DE7-4405-BC50-2EFE1EFE0812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28528C82-8DE7-4405-BC50-2EFE1EFE0812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241BA437-8B07-4774-968C-3A8E5028C613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241BA437-8B07-4774-968C-3A8E5028C613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241BA437-8B07-4774-968C-3A8E5028C613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241BA437-8B07-4774-968C-3A8E5028C613}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +146,7 @@ Global
 		{7CC99B62-F4EC-45E4-B0E9-D7DAD4E06F7D} = {655FAABA-2600-49F4-95EE-5F817FECE7F3}
 		{423387C6-E123-495D-A6C7-4C61D4F2717E} = {9ECF71C6-2D78-46F0-91AC-389F3A1FCB13}
 		{28528C82-8DE7-4405-BC50-2EFE1EFE0812} = {2B350232-FE46-40C7-BD4A-BDF7A0B7E905}
+		{241BA437-8B07-4774-968C-3A8E5028C613} = {9ECF71C6-2D78-46F0-91AC-389F3A1FCB13}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {608774CB-33D0-48DE-8E16-C987B655CE9B}

@@ -1,0 +1,7 @@
+
+TuanDT
+#1 install redis : https://github.com/MicrosoftArchive/redis/releases
+#2 install erlang :https://www.erlang.org/patches/otp-25.2.3
+#3 install rabbitmq: https://www.rabbitmq.com/download.html
+#4 install sqlserver
+#5 install monggo
