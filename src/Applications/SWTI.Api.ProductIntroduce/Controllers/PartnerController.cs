@@ -6,22 +6,44 @@ using SWTL.Models.Requests.Partner;
 namespace SWTI.Api.ProductIntroduce.Controllers
 {
     //[ApiVersion("1.0")]
-    [Route("api/v1/ProductIntroduceTest")]
+    [Route("api/v1/partner")]
     [ApiController]
     public class PartnerController : CommonController
     {
         private readonly ICreatePartnerDomain _createPartnerDomain;
+        private readonly IGetPartnerDomain _getPartnerDomain;
+        private readonly IUpdatePartnerDomain _updatePartnerDomain;
 
-        public PartnerController(ICreatePartnerDomain createPartnerDomain)
+        public PartnerController(ICreatePartnerDomain createPartnerDomain
+            , IGetPartnerDomain getPartnerDomain
+            , IUpdatePartnerDomain updatePartnerDomain            )
         {
             _createPartnerDomain = createPartnerDomain;
+            _getPartnerDomain = getPartnerDomain;
+            _updatePartnerDomain = updatePartnerDomain;
         }
 
+        [HttpGet("by-code")]
+        public async Task<IActionResult> GetByCode(string code, CancellationToken cancellationToken)
+        {
+            var (res, err) = await _getPartnerDomain.GetPartnerByCode(code, cancellationToken);
+
+            return BaseResponse(res, err);
+        }
+
+
         [HttpPost]
-        //[ServiceFilter(typeof(FarmVirtualAccountAuthFilterAttribute))]
-        public async Task<IActionResult> TEST([FromBody] CreatePartnerRequest req, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreatePartner([FromForm] CreatePartnerRequest req, CancellationToken cancellationToken)
         {
             var (res, err) = await _createPartnerDomain.CreatePartner(req, cancellationToken);
+
+            return BaseResponse(res, err);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePartner([FromForm] UpdatePartnerRequest req, CancellationToken cancellationToken)
+        {
+            var (res, err) = await _updatePartnerDomain.UpdatePartner(req, cancellationToken);
 
             return BaseResponse(res, err);
         }

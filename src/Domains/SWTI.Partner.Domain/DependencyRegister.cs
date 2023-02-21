@@ -11,6 +11,7 @@ namespace SWTI.Partner.Domain
     {
         public static void PartnerDomainDependencyRegister(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<IGetPartnerDomain, GetPartnerDomain>();
             services.AddScoped<ICreatePartnerDomain, CreatePartnerDomain>();
             services.AddSingleton<IPartnerRepository, PartnerRepository>();
         }

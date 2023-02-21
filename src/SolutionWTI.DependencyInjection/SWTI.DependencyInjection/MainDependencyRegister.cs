@@ -8,6 +8,7 @@ using SWTI.Partner.Domain;
 using SWTI.Providers;
 using SWTI.RabbitMQCore;
 using SWTI.RedisProvider;
+using SWTI.UploadFileServer.Domain;
 
 namespace SWTI.DependencyInjection
 {
@@ -21,7 +22,7 @@ namespace SWTI.DependencyInjection
             services.ProviderDependencyRegister(configuration);
             services.ServiceDependencyRegister(configuration);
             services.DomainDependencyRegister(configuration);
-            services.AddHostedService<SWTI.RabbitMQCore.AutoSubscriberHostedService>();
+            //services.AddHostedService<SWTI.RabbitMQCore.AutoSubscriberHostedService>();
             services.ConsumerDependencyRegister();
             services.RedisDependencyRegister(configuration);
             
@@ -29,12 +30,14 @@ namespace SWTI.DependencyInjection
 
         private static void ServiceDependencyRegister(this IServiceCollection services, IConfiguration configuration)
         {
-            services.PartnerDomainDependencyRegister(configuration);
+            
         }
 
         private static void DomainDependencyRegister(this IServiceCollection services, IConfiguration configuration)
         {
             services.AccountDomainDependencyRegister(configuration);
+            services.UploadFileServeDomainDependencyRegister(configuration);
+            services.PartnerDomainDependencyRegister(configuration);
         }
     }
 }

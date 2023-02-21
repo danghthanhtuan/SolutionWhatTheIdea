@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SolutionWTI.Enums\SWTI.Enums\SWTI.Enums.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Models\SWTL.Models\SWTL.Models.csproj" />
     <ProjectReference Include="..\..\SolutionWTI.Utils\SWTI.Utils\SWTI.Utils.csproj" />
   </ItemGroup>

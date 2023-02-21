@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SolutionWTI.Configurations\SWTI.Configurations\SWTI.Configurations.csproj" />
+    <ProjectReference Include="..\..\SolutionWTI.Enums\SWTI.Enums\SWTI.Enums.csproj" />
+    <ProjectReference Include="..\..\SolutionWTI.Interfaces\SWTI.Interfaces\SWTI.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
