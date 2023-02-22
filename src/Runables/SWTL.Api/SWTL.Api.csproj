@@ -18,8 +18,4 @@
     <ProjectReference Include="..\..\SolutionWTI.DependencyInjection\SWTI.DependencyInjection\SWTI.DependencyInjection.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
 </Project>

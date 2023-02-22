@@ -7,5 +7,6 @@
         public string Description { get; set; }
         public string UpdatedUser { get; set; } = "system";
         public int Status { get; set; }
+        public int PartnerId { get; set; }
     }
 }

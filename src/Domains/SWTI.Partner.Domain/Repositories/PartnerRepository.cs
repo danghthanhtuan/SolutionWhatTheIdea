@@ -78,7 +78,7 @@ namespace SWTI.Partner.Domain.Repositories
             {
                 var sqlSelect = @$"SELECT * 
                                    FROM {nameof(SWTL.Models.Entities.Partner)}
-                                   WHERE ID = @Code;";
+                                   WHERE ID = @ID;";
 
                 using var connection = _dBContext.CreateConnection();
                 await connection.OpenAsync(cancellationToken);
@@ -96,15 +96,15 @@ namespace SWTI.Partner.Domain.Repositories
         {
             try
             {
-                var sqlCreate = @$"UPDATE{nameof(SWTL.Models.Entities.Partner)} " +
-                                @" SET Code = @Code,
+                var sqlCreate = @$"UPDATE {nameof(SWTL.Models.Entities.Partner)} " +
+                                @" SET 
                                        Name = @Name,
                                        UrlLogo = @UrlLogo,
                                        Description = @Description, 
                                        UpdatedUser = @UpdatedUser,
                                        Status = @Status,
                                        UpdatedDate = GETDATE()
-                                    WHERE ID = @ID;";
+                                    WHERE ID = @PartnerId;";
 
                 using var connection = _dBContext.CreateConnection();
                 await connection.OpenAsync(cancellationToken);
@@ -113,7 +113,7 @@ namespace SWTI.Partner.Domain.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError($"PartnerRepository CreatePartner {ex} {request.Dump()}");
+                _logger.LogError($"PartnerRepository UpdatePartner {ex} {request.Dump()}");
                 return (-1, BaseResponseExt.Error(500, ex.Message));
             }
         }

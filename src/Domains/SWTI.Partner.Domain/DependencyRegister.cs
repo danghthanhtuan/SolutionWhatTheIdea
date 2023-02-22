@@ -13,6 +13,7 @@ namespace SWTI.Partner.Domain
         {
             services.AddScoped<IGetPartnerDomain, GetPartnerDomain>();
             services.AddScoped<ICreatePartnerDomain, CreatePartnerDomain>();
+            services.AddScoped<IUpdatePartnerDomain, UpdatePartnerDomain>();
             services.AddSingleton<IPartnerRepository, PartnerRepository>();
         }
     }

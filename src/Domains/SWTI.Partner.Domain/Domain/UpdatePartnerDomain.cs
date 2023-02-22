@@ -34,7 +34,7 @@ namespace SWTI.Partner.Domain.Domain
             if (partner == null)
             {
                 _logger.LogInformation($"CreatePartnerDomain UpdatePartner GetPartnerByID is null >> {partner.Dump()}");
-                return (-1, BaseResponseExt.Error(400, "Code Partner đã tồn tại!"));
+                return (-1, BaseResponseExt.Error(400, "Partner không tồn tại!"));
             }
 
             if (errorGet is not null)
@@ -43,7 +43,7 @@ namespace SWTI.Partner.Domain.Domain
                 return (-1, errorGet);
             }
 
-            var (urlLogo, errorUpload) = _uploadFileDomain.UploadFileToServer(request.Image, Enums.FolderUploadEnum.Partner, partner.Code, cancellationToken);
+            var (urlLogo, errorUpload) = _uploadFileDomain.DeleteAndUploadFileToServer(request.Image, Enums.FolderUploadEnum.Partner, partner.Code, partner.UrlLogo, cancellationToken);
             if (errorUpload is not null)
             {
                 _logger.LogInformation($"CreatePartnerDomain UpdatePartner errorUpload = {errorUpload.Dump()}");

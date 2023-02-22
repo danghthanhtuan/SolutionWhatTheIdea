@@ -43,28 +43,51 @@ namespace SWTI.UploadFileServer.Domain.Domain
 
             var fileName = key + file.FileName;
             var pathFile = Path.Combine(pathFolder, fileName);
-
-
-
             using var stream = new FileStream(pathFile, FileMode.Create);
             file.CopyTo(stream);
             _logger.LogInformation($"UploadFileToServerDomain >> UploadFileToServer >> {file.FileName} , {type}");
 
-            return (Path.Combine("wwwroot", fileName), null);
+            return (fileName, null);
         }
 
-        public string DeleteIfExistFileServer(string pathFile, CancellationToken cancellationToken)
+        public (string, BaseResponse?) DeleteAndUploadFileToServer(IFormFile file, FolderUploadEnum type, string key, string keyold, CancellationToken cancellationToken)
         {
-            var wwwPath = this._environment.WebRootPath;
-            var contentPath = this._environment.ContentRootPath;
+            _logger.LogInformation($"UploadFileToServerDomain >> DeleteAndUploadFileToServer >> {file.FileName} , {type}");
 
-            string path = Path.Combine(wwwPath, "Uploads");
-            if (!Directory.Exists(path))
+            if (CheckExtensionImage(file.FileName) == false)
             {
-                Directory.CreateDirectory(path);
+                _logger.LogError($"UploadFileToServerDomain >> DeleteAndUploadFileToServer >> CheckExtensionImage fail");
+                return (string.Empty, BaseResponseExt.Error(400, "Extension file invalid!"));
             }
 
-            return "";
+            DeleteIfExistFileServer(keyold, type, cancellationToken);
+
+            string pathFolder = Path.Combine(_environment.WebRootPath, GetFolder(type));
+            if (!Directory.Exists(pathFolder))
+            {
+                Directory.CreateDirectory(pathFolder);
+            }
+
+            var fileName = key + file.FileName;
+            var pathFile = Path.Combine(pathFolder, fileName);
+
+            using var stream = new FileStream(pathFile, FileMode.Create);
+            file.CopyTo(stream);
+            _logger.LogInformation($"UploadFileToServerDomain >> DeleteAndUploadFileToServer >> {file.FileName} , {type}");
+
+            return (fileName, null);
+        }
+
+        public bool DeleteIfExistFileServer(string pathFile, FolderUploadEnum type, CancellationToken cancellationToken)
+        {
+            var wwwPath = this._environment.WebRootPath;
+            string path = Path.Combine(wwwPath, GetFolder(type), pathFile);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            return true;
         }
 
         public bool CheckExtensionImage(string fileName)
