@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using SWTI.Interfaces.IDomains;
 using SWTI.Interfaces.IRepositories;
 using SWTI.Utils;
+using SWTL.Models.Entities;
+using SWTL.Models.Requests.Partner;
 
 namespace SWTI.Partner.Domain.Domain
 {
@@ -21,7 +23,12 @@ namespace SWTI.Partner.Domain.Domain
             _mapper = mapper;
         }
 
-        public async Task<(SWTL.Models.Entities.Partner, BaseResponse)> GetPartnerByCode(string code, CancellationToken cancellationToken)
+        public Task<(IEnumerable<Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<(SWTL.Models.Entities.Partners, BaseResponse)> GetPartnerByCode(string code, CancellationToken cancellationToken)
         {
            return await _partnerRepository.GetPartnerByCode(code, cancellationToken);
         }

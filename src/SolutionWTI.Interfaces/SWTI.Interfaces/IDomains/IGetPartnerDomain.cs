@@ -1,10 +1,12 @@
 ﻿using SWTI.Utils;
 using SWTL.Models.Entities;
+using SWTL.Models.Requests.Partner;
 
 namespace SWTI.Interfaces.IDomains
 {
     public interface IGetPartnerDomain
     {
-        Task<(Partner, BaseResponse)> GetPartnerByCode(string code, CancellationToken cancellationToken);
+        Task<(Partners, BaseResponse)> GetPartnerByCode(string code, CancellationToken cancellationToken);
+        Task<(IEnumerable<Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken);
     }
 }

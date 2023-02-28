@@ -1,6 +1,6 @@
 ﻿namespace SWTL.Models.Entities
 {
-    public class Partner
+    public class Partners
     {
         public string Code { get; set; }
         public string Name { get; set; }

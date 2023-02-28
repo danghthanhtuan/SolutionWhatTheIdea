@@ -31,6 +31,13 @@ namespace SWTI.Api.ProductIntroduce.Controllers
             return BaseResponse(res, err);
         }
 
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetPaging(string code, CancellationToken cancellationToken)
+        {
+            var (res, err) = await _getPartnerDomain.GetPartnerByCode(code, cancellationToken);
+
+            return BaseResponse(res, err);
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreatePartner([FromForm] CreatePartnerRequest req, CancellationToken cancellationToken)

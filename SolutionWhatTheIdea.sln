@@ -52,13 +52,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SWTI.Partner.Domain", "src\Domains\SWTI.Partner.Domain\SWTI.Partner.Domain.csproj", "{241BA437-8B07-4774-968C-3A8E5028C613}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptSQL", "ScriptSQL", "{607EB011-C0EF-49FF-8E8B-C0B2356FC181}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Admin\Documents\script.sql = C:\Users\Admin\Documents\script.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CreateTable", "CreateTable", "{A5F82A2C-9A9C-4D47-A753-0A8B2FB3D449}"
 	ProjectSection(SolutionItems) = preProject
 		src\ScriptSQL\Create_Partner.sql = src\ScriptSQL\Create_Partner.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWTI.UploadFileServer.Domain", "src\Domains\SWTI.UploadFileServer.Domain\SWTI.UploadFileServer.Domain.csproj", "{E33A96DA-33C1-4636-836C-29C630E7404B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SWTI.UploadFileServer.Domain", "src\Domains\SWTI.UploadFileServer.Domain\SWTI.UploadFileServer.Domain.csproj", "{E33A96DA-33C1-4636-836C-29C630E7404B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

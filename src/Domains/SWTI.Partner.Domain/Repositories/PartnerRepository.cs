@@ -4,6 +4,7 @@ using SWTI.Interfaces.IProviders;
 using SWTI.Interfaces.IRepositories;
 using SWTI.Utils;
 using SWTL.Models.ModelDapper;
+using SWTL.Models.Requests.Partner;
 using System.Data;
 
 namespace SWTI.Partner.Domain.Repositories
@@ -24,7 +25,7 @@ namespace SWTI.Partner.Domain.Repositories
         {
             try
             {
-                var sqlCreate = @$"INSERT INTO {nameof(SWTL.Models.Entities.Partner)}
+                var sqlCreate = @$"INSERT INTO {nameof(SWTL.Models.Entities.Partners)}
                                            (Code,
                                            Name,
                                            UrlLogo,
@@ -52,17 +53,22 @@ namespace SWTI.Partner.Domain.Repositories
             }
         }
 
-        public async Task<(SWTL.Models.Entities.Partner?, BaseResponse?)> GetPartnerByCode(string code, CancellationToken cancellationToken)
+        public Task<(IEnumerable<SWTL.Models.Entities.Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<(SWTL.Models.Entities.Partners?, BaseResponse?)> GetPartnerByCode(string code, CancellationToken cancellationToken)
         {
             try
             {
                 var sqlSelect = @$"SELECT * 
-                                   FROM {nameof(SWTL.Models.Entities.Partner)}
+                                   FROM {nameof(SWTL.Models.Entities.Partners)}
                                    WHERE Code = @Code;";
 
                 using var connection = _dBContext.CreateConnection();
                 await connection.OpenAsync(cancellationToken);
-                var result = await connection.QueryFirstOrDefaultAsync<SWTL.Models.Entities.Partner>(sqlSelect, new { Code = code }, commandType: CommandType.Text);
+                var result = await connection.QueryFirstOrDefaultAsync<SWTL.Models.Entities.Partners>(sqlSelect, new { Code = code }, commandType: CommandType.Text);
                 return (result, null);
             }
             catch (Exception ex)
@@ -72,17 +78,17 @@ namespace SWTI.Partner.Domain.Repositories
             }
         }
 
-        public async Task<(SWTL.Models.Entities.Partner?, BaseResponse?)> GetPartnerByID(int id, CancellationToken cancellationToken)
+        public async Task<(SWTL.Models.Entities.Partners?, BaseResponse?)> GetPartnerByID(int id, CancellationToken cancellationToken)
         {
             try
             {
                 var sqlSelect = @$"SELECT * 
-                                   FROM {nameof(SWTL.Models.Entities.Partner)}
+                                   FROM {nameof(SWTL.Models.Entities.Partners)}
                                    WHERE ID = @ID;";
 
                 using var connection = _dBContext.CreateConnection();
                 await connection.OpenAsync(cancellationToken);
-                var result = await connection.QueryFirstOrDefaultAsync<SWTL.Models.Entities.Partner>(sqlSelect, new { ID = id }, commandType: CommandType.Text);
+                var result = await connection.QueryFirstOrDefaultAsync<SWTL.Models.Entities.Partners>(sqlSelect, new { ID = id }, commandType: CommandType.Text);
                 return (result, null);
             }
             catch (Exception ex)
@@ -96,7 +102,7 @@ namespace SWTI.Partner.Domain.Repositories
         {
             try
             {
-                var sqlCreate = @$"UPDATE {nameof(SWTL.Models.Entities.Partner)} " +
+                var sqlCreate = @$"UPDATE {nameof(SWTL.Models.Entities.Partners)} " +
                                 @" SET 
                                        Name = @Name,
                                        UrlLogo = @UrlLogo,
