@@ -10,6 +10,7 @@ namespace SWTI.Configurations
             services.Configure<ConnectionStrings>(configuration.GetSection(nameof(ConnectionStrings)));
             services.Configure<RedisSettings>(configuration.GetSection(nameof(RedisSettings)));
             services.Configure<FolderImageConfig>(configuration.GetSection(nameof(FolderImageConfig)));
+            services.Configure<MongoConnectionStrings>(configuration.GetSection(nameof(MongoConnectionStrings)));
             
         }
     }

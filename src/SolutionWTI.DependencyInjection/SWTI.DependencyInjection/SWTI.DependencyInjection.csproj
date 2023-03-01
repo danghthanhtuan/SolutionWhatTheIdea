@@ -13,7 +13,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domains\SWTI.Account.Domain\SWTI.Account.Domain.csproj" />
+    <ProjectReference Include="..\..\Domains\SWTI.Categorys.Domain\SWTI.Categories.Domain.csproj" />
     <ProjectReference Include="..\..\Domains\SWTI.Partner.Domain\SWTI.Partner.Domain.csproj" />
+    <ProjectReference Include="..\..\Domains\SWTI.ProductImage.Domain\SWTI.ProductImage.Domain.csproj" />
+    <ProjectReference Include="..\..\Domains\SWTI.Products.Domain\SWTI.Products.Domain.csproj" />
     <ProjectReference Include="..\..\Domains\SWTI.UploadFileServer.Domain\SWTI.UploadFileServer.Domain.csproj" />
     <ProjectReference Include="..\..\QueueCore\SWTI.RabbitMQCore\SWTI.RabbitMQCore.csproj" />
     <ProjectReference Include="..\..\Redis\SWTI.RedisProvider\SWTI.RedisProvider.csproj" />

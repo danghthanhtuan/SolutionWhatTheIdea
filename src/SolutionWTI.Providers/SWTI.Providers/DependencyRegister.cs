@@ -9,6 +9,8 @@ namespace SWTI.Providers
         public static void ProviderDependencyRegister(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IProductIntroduceDBContext, ProductIntroduceDBContext>();
+            services.AddSingleton<IMongoDBContext, MongoDBContext>();
+            
         }
     }
 }

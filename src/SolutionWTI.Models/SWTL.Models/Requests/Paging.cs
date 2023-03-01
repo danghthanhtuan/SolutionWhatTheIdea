@@ -2,7 +2,25 @@
 {
     public class Paging
     {
-        public int PageSize { get; set; } = 10;
-        public int Page { get; set; } = 1;
+        public int PageSize
+        {
+            get; set;
+        }
+        public int Page
+        {
+            get; set;
+        }
+
+        public void SetValueDefault()
+        {
+            if(PageSize < 1)
+            {
+                PageSize = 10;
+            }
+            if(Page < 1)
+            {
+                Page = 1;
+            }
+        }
     }
 }

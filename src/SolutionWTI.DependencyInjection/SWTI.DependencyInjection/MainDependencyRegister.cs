@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SWTI.Account.Domain;
+using SWTI.Categories.Domain;
 using SWTI.Configurations;
 using SWTI.Consumers;
 using SWTI.Mapper;
 using SWTI.Partner.Domain;
+using SWTI.ProductImage.Domain;
+using SWTI.Products.Domain;
 using SWTI.Providers;
 using SWTI.RabbitMQCore;
 using SWTI.RedisProvider;
@@ -38,6 +41,9 @@ namespace SWTI.DependencyInjection
             services.AccountDomainDependencyRegister(configuration);
             services.UploadFileServeDomainDependencyRegister(configuration);
             services.PartnerDomainDependencyRegister(configuration);
+            services.ProductDomainDependencyRegister(configuration);
+            services.ProductImageDomainDependencyRegister(configuration);     
+            services.CategoryDomainDependencyRegister(configuration);             
         }
     }
 }

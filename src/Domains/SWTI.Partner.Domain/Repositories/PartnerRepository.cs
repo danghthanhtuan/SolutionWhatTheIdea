@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using SWTI.Interfaces.IProviders;
 using SWTI.Interfaces.IRepositories;
@@ -27,7 +26,7 @@ namespace SWTI.Partner.Domain.Repositories
         {
             try
             {
-                var sqlCreate = @$"INSERT INTO {nameof(SWTL.Models.Entities.Partners)}
+                var sqlCreate = @$"INSERT INTO {nameof(Partners)}
                                            (Code,
                                            Name,
                                            UrlLogo,
@@ -55,7 +54,7 @@ namespace SWTI.Partner.Domain.Repositories
             }
         }
 
-        public async Task<(IEnumerable<SWTL.Models.Entities.Partners>, int,  BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<Partners>, int, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
         {
             try
             {
