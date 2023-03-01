@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SWTI.Interfaces.IDomains;
 using SWTI.Utils;
+using SWTL.Models.Requests.Products;
 
 namespace SWTI.Api.ProductIntroduce.Controllers
 {
@@ -32,7 +33,7 @@ namespace SWTI.Api.ProductIntroduce.Controllers
         [HttpGet("paging")]
         public async Task<IActionResult> GetPaging([FromQuery] GetProductPagingRequest req, CancellationToken cancellationToken)
         {
-            var (res, err) = await _getProductDomain.GetProductPaging(req, cancellationToken);
+            var (res, err) = await _getProductImageDomain.GetProductPaging(req, cancellationToken);
 
             return BaseResponse(res, err);
         }

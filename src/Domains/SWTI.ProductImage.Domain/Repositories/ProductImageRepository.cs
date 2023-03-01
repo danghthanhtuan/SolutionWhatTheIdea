@@ -3,6 +3,7 @@ using SWTI.Interfaces.IProviders;
 using SWTI.Interfaces.IRepositories;
 using SWTI.Utils;
 using SWTI.Models.ModelDapper.ProductImages;
+using System.Data;
 
 namespace SWTI.ProductImage.Domain.Repositories
 {
