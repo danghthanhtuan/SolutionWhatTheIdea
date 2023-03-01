@@ -41,7 +41,7 @@ namespace SWTI.UploadFileServer.Domain.Domain
                 Directory.CreateDirectory(pathFolder);
             }
 
-            var fileName = key + file.FileName;
+            var fileName = $"{key}_{file.FileName}";
             var pathFile = Path.Combine(pathFolder, fileName);
             using var stream = new FileStream(pathFile, FileMode.Create);
             file.CopyTo(stream);
@@ -68,7 +68,7 @@ namespace SWTI.UploadFileServer.Domain.Domain
                 Directory.CreateDirectory(pathFolder);
             }
 
-            var fileName = key + file.FileName;
+            var fileName = $"{key}_{file.FileName}";
             var pathFile = Path.Combine(pathFolder, fileName);
 
             using var stream = new FileStream(pathFile, FileMode.Create);

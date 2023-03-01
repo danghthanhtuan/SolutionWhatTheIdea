@@ -28,25 +28,25 @@ namespace SWTI.Partner.Domain.Domain
 
         public async Task<(int, BaseResponse?)> UpdatePartner(UpdatePartnerRequest request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"CreatePartnerDomain UpdatePartner request = {request.Dump()}");
+            _logger.LogInformation($" {nameof(UpdatePartnerDomain)} {nameof(UpdatePartner)} request = {request.Dump()}");
 
             var (partner, errorGet) = await _partnerRepository.GetPartnerByID(request.PartnerId, cancellationToken);
             if (partner == null)
             {
-                _logger.LogInformation($"CreatePartnerDomain UpdatePartner GetPartnerByID is null >> {partner.Dump()}");
+                _logger.LogInformation($" {nameof(UpdatePartnerDomain)} {nameof(UpdatePartner)} GetPartnerByID is null >> {partner.Dump()}");
                 return (-1, BaseResponseExt.Error(400, "Partner không tồn tại!"));
             }
 
             if (errorGet is not null)
             {
-                _logger.LogInformation($"CreatePartnerDomain UpdatePartner GetPartnerByID errorGet = {errorGet.Dump()}");
+                _logger.LogInformation($" {nameof(UpdatePartnerDomain)} {nameof(UpdatePartner)} GetPartnerByID errorGet = {errorGet.Dump()}");
                 return (-1, errorGet);
             }
 
             var (urlLogo, errorUpload) = _uploadFileDomain.DeleteAndUploadFileToServer(request.Image, Enums.FolderUploadEnum.Partner, partner.Code, partner.UrlLogo, cancellationToken);
             if (errorUpload is not null)
             {
-                _logger.LogInformation($"CreatePartnerDomain UpdatePartner errorUpload = {errorUpload.Dump()}");
+                _logger.LogInformation($" {nameof(UpdatePartnerDomain)} {nameof(UpdatePartner)} errorUpload = {errorUpload.Dump()}");
                 return (-1, errorUpload);
             }
 
@@ -56,7 +56,7 @@ namespace SWTI.Partner.Domain.Domain
 
             if (err is not null && err.HasError)
             {
-                _logger.LogError($"CreatePartnerDomain UpdatePartner modelDapper = {modelDapper.Dump()} error >> {err.Dump()} ");
+                _logger.LogError($" {nameof(UpdatePartnerDomain)} {nameof(UpdatePartner)} modelDapper = {modelDapper.Dump()} error >> {err.Dump()} ");
                 return (-1, err);
             }
 

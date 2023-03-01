@@ -23,9 +23,9 @@ namespace SWTI.Partner.Domain.Domain
             _mapper = mapper;
         }
 
-        public Task<(IEnumerable<Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await _partnerRepository.GetPartnePaging(req, cancellationToken);
         }
 
         public async Task<(SWTL.Models.Entities.Partners, BaseResponse)> GetPartnerByCode(string code, CancellationToken cancellationToken)

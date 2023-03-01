@@ -1,8 +1,10 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using SWTI.Interfaces.IProviders;
 using SWTI.Interfaces.IRepositories;
 using SWTI.Utils;
+using SWTL.Models.Entities;
 using SWTL.Models.ModelDapper;
 using SWTL.Models.Requests.Partner;
 using System.Data;
@@ -53,9 +55,53 @@ namespace SWTI.Partner.Domain.Repositories
             }
         }
 
-        public Task<(IEnumerable<SWTL.Models.Entities.Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<SWTL.Models.Entities.Partners>, int,  BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var where = " ";
+                if (req.DateFrom.HasValue)
+                {
+                    where += " AND CreatedDate >= @DateFrom ";
+                }
+                if (req.DateTo.HasValue)
+                {
+                    where += " AND CreatedDate <= @DateTo ";
+                }
+                if (string.IsNullOrEmpty(req.Name) == false)
+                {
+                    where += $" AND Name = @Name ";
+                }
+                if (string.IsNullOrEmpty(req.Phone) == false)
+                {
+                    where += $" AND PhoneNumber = @Phone ";
+                }
+                if (string.IsNullOrEmpty(req.Code) == false)
+                {
+                    where += $" AND Code = @Code ";
+                }
+                var query = $@"SELECT * FROM {nameof(Partners)}
+                               WHERE 1 = 1 {where}
+                               ORDER BY CreatedDate ASC 
+                               OFFSET (@Page * @PageSize) - @PageSize ROWS
+                               FETCH NEXT @PageSize ROWS ONLY; ";
+                var queryCount = $"SELECT COUNT(ID) FROM {nameof(Partners)} WHERE 1 = 1 {where}";
+
+                using var connection = _dBContext.CreateConnection();
+                await connection.OpenAsync(cancellationToken);
+                var result = await connection.QueryMultipleAsync(query + queryCount, req, commandType: CommandType.Text);
+
+                var data = await result.ReadAsync<Partners>();
+                var totalRows = await result.ReadFirstAsync<int>();
+
+                _logger.LogDebug($"PartnerRepository {result.Dump()} => {req.Dump()} {query}");
+                return (data, totalRows, null);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"PartnerRepository  {ex} {req.Dump()}");
+                return (null, 0, BaseResponseExt.Error(500, ex.Message));
+            }
         }
 
         public async Task<(SWTL.Models.Entities.Partners?, BaseResponse?)> GetPartnerByCode(string code, CancellationToken cancellationToken)

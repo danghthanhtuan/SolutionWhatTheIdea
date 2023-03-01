@@ -9,7 +9,7 @@ namespace SWTI.Interfaces.IRepositories
     {
         Task<(SWTL.Models.Entities.Partners, BaseResponse)> GetPartnerByCode(string code, CancellationToken cancellationToken);
         Task<(SWTL.Models.Entities.Partners, BaseResponse)> GetPartnerByID(int id, CancellationToken cancellationToken);
-        Task<(IEnumerable<Partners>, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken);
+        Task<(IEnumerable<Partners>,int , BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken);
 
 
         Task<(int, BaseResponse)> CreatePartner(CreatePartnerDapper request, CancellationToken cancellationToken);
