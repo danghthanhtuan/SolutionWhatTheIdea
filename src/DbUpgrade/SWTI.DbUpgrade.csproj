@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="RunOnceScripts\1.0.1\0011.Create_InvitationCode_Table.sql" />
+		<None Remove="RunOnceScripts\1.0.1\0020.Create_Employee_Table.sql" />
+		<None Remove="RunOnceScripts\1.0.1\0021.Create_Location_Table.sql" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="RunEachTimeScripts\RunEachTime.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>RunEachTime.resx</DependentUpon>
+		</Compile>
+		<Compile Update="RunOnceScripts\RunOnce.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>RunOnce.resx</DependentUpon>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="RunEachTimeScripts\RunEachTime.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>RunEachTime.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="RunOnceScripts\RunOnce.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>RunOnce.Designer.cs</LastGenOutput>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="appsettings.*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
+		<Compile Remove="RunEachTimeScripts\Data\**" />
+		<Compile Remove="RunEachTimeScripts\Views\**" />
+		<Compile Remove="RunOnceScripts\1.2.9\**" />
+		<Content Remove="RunEachTimeScripts\Data\**" />
+		<Content Remove="RunEachTimeScripts\Views\**" />
+		<Content Remove="RunOnceScripts\1.2.9\**" />
+		<EmbeddedResource Remove="RunEachTimeScripts\Data\**" />
+		<EmbeddedResource Remove="RunEachTimeScripts\Views\**" />
+		<EmbeddedResource Remove="RunOnceScripts\1.2.9\**" />
+		<None Remove="RunEachTimeScripts\Data\**" />
+		<None Remove="RunEachTimeScripts\Views\**" />
+		<None Remove="RunOnceScripts\1.2.9\**" />
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper.StrongName" Version="2.0.30" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Resources\" />
+	  <Folder Include="RunEachTimeScripts\Functions\" />
+	  <Folder Include="RunEachTimeScripts\Stored Procedures\" />
+	  <Folder Include="RunEachTimeScripts\Triggers\" />
+	</ItemGroup>
+</Project>

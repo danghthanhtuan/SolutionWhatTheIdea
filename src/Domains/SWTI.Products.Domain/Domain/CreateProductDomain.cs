@@ -40,7 +40,7 @@ namespace SWTI.Products.Domain.Domain
 
                 if (resCate is null)
                 {
-                    _logger.LogError($"{nameof(CreateProductDomain)} {nameof(CreateProduct)} resCate = null with id categoryParent : {request.CategoryParent}");
+                    _logger.LogError($"{nameof(CreateProductDomain)} {nameof(CreateProduct)} resCate = null with id categoryParent : {request.CategoryId}");
                     return ((int)ErrorCode.SystemError, BaseResponseExt.Error((int)ErrorCode.BadRequest, "Không tìm thấy Category Parent"));
                 }
             }

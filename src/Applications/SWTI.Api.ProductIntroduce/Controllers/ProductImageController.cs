@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SWTI.Interfaces.IDomains;
 using SWTI.Utils;
+using SWTL.Models.Requests;
 using SWTL.Models.Requests.Products;
 
 namespace SWTI.Api.ProductIntroduce.Controllers
@@ -22,36 +23,36 @@ namespace SWTI.Api.ProductIntroduce.Controllers
             _updateProductImageDomain = updateProductImageDomain;
         }
 
-        [HttpGet("by-id")]
-        public async Task<IActionResult> GetByID(int id, CancellationToken cancellationToken)
-        {
-            var (res, err) = await _getProductImageDomain.GetProductByID(id, cancellationToken);
+        //[HttpGet("by-id")]
+        //public async Task<IActionResult> GetByID(int id, CancellationToken cancellationToken)
+        //{
+        //    var (res, err) = await _getProductImageDomain.get(id, cancellationToken);
 
-            return BaseResponse(res, err);
-        }
+        //    return BaseResponse(res, err);
+        //}
 
-        [HttpGet("paging")]
-        public async Task<IActionResult> GetPaging([FromQuery] GetProductPagingRequest req, CancellationToken cancellationToken)
-        {
-            var (res, err) = await _getProductImageDomain.GetProductPaging(req, cancellationToken);
+        //[HttpGet("paging")]
+        //public async Task<IActionResult> GetPaging([FromQuery] GetProductPagingRequest req, CancellationToken cancellationToken)
+        //{
+        //    var (res, err) = await _getProductImageDomain.GetProductPaging(req, cancellationToken);
 
-            return BaseResponse(res, err);
-        }
+        //    return BaseResponse(res, err);
+        //}
 
         [HttpPost]
-        public async Task<IActionResult> CreatePartner([FromBody] CreateProductRequest req, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreatePartner([FromBody] CreateProductImagesRequest req, CancellationToken cancellationToken)
         {
-            var (res, err) = await _createProductDomain.CreateProduct(req, cancellationToken);
+            var (res, err) = await _createProductImageDomain.CreateProductImages(req, cancellationToken);
 
             return BaseResponse(res, err);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdatePartner([FromBody] UpdateProductRequest req, CancellationToken cancellationToken)
-        {
-            var (res, err) = await _updateProductDomain.UpdateProduct(req, cancellationToken);
+        //[HttpPut]
+        //public async Task<IActionResult> UpdatePartner([FromBody] UpdateProductRequest req, CancellationToken cancellationToken)
+        //{
+        //    var (res, err) = await _updateProductDomain.UpdateProduct(req, cancellationToken);
 
-            return BaseResponse(res, err);
-        }
+        //    return BaseResponse(res, err);
+        //}
     }
 }

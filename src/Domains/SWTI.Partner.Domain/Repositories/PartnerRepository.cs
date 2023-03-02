@@ -54,7 +54,7 @@ namespace SWTI.Partner.Domain.Repositories
             }
         }
 
-        public async Task<(IEnumerable<Partners>, int, BaseResponse)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
+        public async Task<(IEnumerable<Partners>?, int, BaseResponse?)> GetPartnePaging(GetPartnerPagingRequest req, CancellationToken cancellationToken)
         {
             try
             {

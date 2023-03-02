@@ -31,7 +31,7 @@ namespace SWTI.Consumers
         // Parameters:
         //   cancellationToken:
         //     Indicates that the start process has been aborted.
-        public async Task StartAsync(CancellationToken cancellationToken)
+        public async override Task StartAsync(CancellationToken cancellationToken)
         {
             await Task.Delay(3000);
 
@@ -47,7 +47,7 @@ namespace SWTI.Consumers
             }
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public override Task StopAsync(CancellationToken cancellationToken)
         {
             _logger.LogWarning("AutoSubscriberHostedService StopAsync");
             _services.GetRequiredService<IBus>().Dispose();

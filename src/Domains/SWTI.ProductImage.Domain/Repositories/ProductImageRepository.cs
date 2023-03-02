@@ -4,6 +4,7 @@ using SWTI.Interfaces.IRepositories;
 using SWTI.Utils;
 using SWTI.Models.ModelDapper.ProductImages;
 using System.Data;
+using Dapper;
 
 namespace SWTI.ProductImage.Domain.Repositories
 {
@@ -41,12 +42,12 @@ namespace SWTI.ProductImage.Domain.Repositories
 
                 using var connection = _dBContext.CreateConnection();
                 await connection.OpenAsync(cancellationToken);
-                var result = await connection.ExecuteScalarAsync<int>(sqlCreate, request, commandType: CommandType.Text);
+                var result = await connection.ExecuteScalarAsync<int>(sqlCreate, reqs, commandType: CommandType.Text);
                 return (result, null);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"PartnerRepository CreatePartner {ex} {request.Dump()}");
+                _logger.LogError($"{nameof(ProductImageRepository)} CreatePartner {ex} {reqs.Dump()}");
                 return (-1, BaseResponseExt.Error(500, ex.Message));
             }
         }
